@@ -1,0 +1,13 @@
+.navbar {
+    &__row {
+        justify-content: center;
+    }
+    &__title {
+        font-weight: bold;
+        margin: 0;
+    }
+    &__logo {
+        width: 54px;
+        margin-right: 20px;
+    }
+}

@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-content>
+        <h2>{{ texts.form.description }}</h2>
+    </mat-card-content>
+    <div class="form">
+        <form [formGroup]="playersForm" class="form__container">
+            <div class="form__container__block">
+                <mat-form-field class="form__field">
+                    <mat-label class="form__label">{{ texts.form.questions.player1 }}</mat-label>
+                    <input #player1 matInput class="user-input" type="text" formControlName="player1"
+                        placeholder="{{  texts.form.placeholder }}" />
+                    <mat-error
+                        *ngIf="playersForm.controls['player1'].invalid && (playersForm.controls['player1'].dirty || playersForm.controls['player1'].touched)">
+                        {{ texts.form.error.empty }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form__container__block">
+                <mat-form-field class="form__field">
+                    <mat-label>{{ texts.form.questions.player2 }}</mat-label>
+                    <input #player2 matInput class="user-input" type="text" formControlName="player2"
+                        placeholder="{{ texts.form.placeholder }}" />
+                    <mat-error
+                        *ngIf="playersForm.controls['player2'].invalid && (playersForm.controls['player2'].dirty || playersForm.controls['player2'].touched)">
+                        {{ texts.form.error.empty }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button (click)="start(player1.value, player2.value)" [disabled]="playersForm.pristine || playersForm.invalid" type="submit" mat-flat-button
+                color="primary" class="form__container__button">
+                {{ texts.form.button }}
+            </button>
+        </form>
+    </div>
+</mat-card>

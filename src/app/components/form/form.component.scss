@@ -1,0 +1,16 @@
+.form {
+    &__container {
+        display: block;
+        text-align: center;
+        &__block {
+            display: block;
+        }
+        &__button {
+            margin: 25px 0;
+        }
+    }
+    &__field {
+        margin: 25px 25px 0 25px;
+        display: block;
+    }
+}
