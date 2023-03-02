@@ -27,6 +27,7 @@ export class PlayerState {
     patchState({
       players: [...state.players, payload],
     });
+    console.log(state)
   }
 
   @Action(UpdatePlayer)

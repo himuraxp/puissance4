@@ -1,0 +1,79 @@
+.message {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    &__container {
+        background: #c2185b;
+        border-radius: 25px;
+        padding: 25px;
+        margin: 25px;
+        &__block {
+            font-size: 1.3em;
+            list-style-type: none;
+            &__name {
+                font-size: 1.5em;
+            }
+        }
+    }
+}
+
+.game {
+    position: fixed;
+    width: 100%;
+    top: 165px;
+    height: calc(100% - 380px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__container {
+        max-width: 690px;
+        max-height: 700px;
+        border: 15px solid #c2185b;
+        background: #c2185b;
+        border-radius: 25px;
+    }
+    &__col {
+        margin: 15px;
+        padding: 15px;
+        background: #c2185b;
+        cursor: pointer; 
+    }
+    .highlighted {
+        background: #da437f;
+        transition: .2s;
+    }   
+    .coin {
+        background: #303030;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.score {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    background: #c2185b;
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 25px;
+        &__block {
+            background: #303030;
+            width: calc(50% - 65px);
+            padding: 25px;
+            border-radius: 25px;
+            font-size: 1.3em;
+            list-style-type: none;
+            &__name {
+                font-size: 1.5em;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

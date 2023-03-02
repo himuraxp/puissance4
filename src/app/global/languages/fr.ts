@@ -11,6 +11,12 @@ const fr = {
         error: {
             empty: "Chaque joueur doit avoir un pseudo"
         } 
+    },
+    game: {
+        currentPlayer: "à toi de jouer !",
+        win: "Victoire",
+        coins: "Nombre de pièce(s) restante(s)",
+        noWinner: "Match Nul !"
     }
 };
 

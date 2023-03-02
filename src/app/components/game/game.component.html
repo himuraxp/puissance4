@@ -1,1 +1,38 @@
-<p>game works!</p>
+<div class="message">
+    <div class="message__container">
+        <li *ngIf="round % 2 === 1 && noWinner === 0" class="message__container__block">
+            <b class="message__container__block__name">{{ players[0].name }}</b> {{ texts.game.currentPlayer }}
+        </li>
+        <li *ngIf="round % 2 === 0 && noWinner === 0" class="message__container__block">
+            <b class="message__container__block__name">{{ players[1].name }}</b> {{ texts.game.currentPlayer }}
+        </li>
+        <li *ngIf="noWinner === 1" class="message__container__block">
+            <b class="message__container__block__name">{{ texts.game.noWinner }}</b> 
+        </li>
+    </div>
+</div>
+<div class="game">
+    <table class="game__container">
+        <tr *ngFor="let row of table; let i = index">
+            <td class="game__col" (click)="selectCol(j)" *ngFor="let col of row; let j = index" (mouseover)="highlight(j)" [class.highlighted]="highlighted == j">
+                <div class="game__cell">
+                    <div class="coin"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="score">
+    <div class="score__container">
+        <div class="score__container__block">
+            <p><b class="score__container__block__name">{{ players[0].name }}</b></p>
+            <p><b>{{ texts.game.win }}</b> {{ players[0].win }}</p>
+            <p><b>{{ texts.game.coins }}</b> {{ players[0].coins }}</p>
+        </div>
+        <div class="score__container__block">
+            <p><b class="score__container__block__name">{{ players[1].name }}</b></p>
+            <p><b>{{ texts.game.win }}</b> {{ players[1].win }}</p>
+            <p><b>{{ texts.game.coins }}</b> {{ players[1].coins }}</p>
+        </div>
+    </div>
+</div>

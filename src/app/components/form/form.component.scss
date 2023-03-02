@@ -7,10 +7,18 @@
         }
         &__button {
             margin: 25px 0;
+            font-size: 1.3em;
         }
     }
     &__field {
         margin: 25px 25px 0 25px;
         display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .form {
+      width: 50%;
+      margin: auto;
     }
 }

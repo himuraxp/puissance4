@@ -13,15 +13,18 @@ import fr from 'src/app/global/languages/fr';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  public texts = fr;
   private players: Player[] = [];
+  
+  public texts = fr;
+  
   playersForm: FormGroup = new FormGroup({});
 
   constructor(
     private fb: FormBuilder,
     private store: Store,
     private router: Router,
-    private playerService: PlayerService) {
+    private playerService: PlayerService
+  ) {
     this.generateForm()
   }
 
