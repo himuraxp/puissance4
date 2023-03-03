@@ -16,7 +16,9 @@ const fr = {
         currentPlayer: "à toi de jouer !",
         win: "Victoire",
         coins: "Nombre de pièce(s) restante(s)",
-        noWinner: "Match Nul !"
+        noWinner: "Match Nul !",
+        winner: "est le vainqueur cette manche !",
+        reload: "NOUVELLE PARTIE"
     }
 };
 

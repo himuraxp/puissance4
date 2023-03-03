@@ -1,14 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngxs/store';
 import { Player, UpdatePlayer } from 'src/app/global/models/player';
 import { PlayerService } from 'src/app/global/services/player.service';
-import { Store } from '@ngxs/store';
+import { transition, trigger } from '@angular/animations';
+import { activeCoin, runAnimate } from './animates/coin';
 import fr from 'src/app/global/languages/fr';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
+  animations: [
+    activeCoin,
+    trigger('activeCoin', [
+      transition(':enter', runAnimate()),
+    ]),
+  ],
 })
 export class GameComponent implements OnInit {
   private subsrcib: Subscription[] = [];
@@ -110,7 +118,7 @@ export class GameComponent implements OnInit {
     this.table[row][col].value = player;
 
     if (this.checkWinner(row, col, this.round)) {
-
+        this.eventWinner(this.round);
     } else {
       if (this.moves === this.nbRow * this.nbCol - 1) {
         this.noWinner = 1;
@@ -128,6 +136,52 @@ export class GameComponent implements OnInit {
   }
 
   checkWinner(row: number, col: number, round: number) {
+    let max = 4;
+    let count = 0;
+    let position = row - col;
+    
+    for (let i = 0; i < this.nbCol; i++) {
+      count = this.table[row][i].value === round ? (count + 1) : 0;
+      if (count >= max) {
+        return true;
+      }
+    }
+
+    count = 0;
+    for (let i = 0; i < this.nbRow; i++) {
+      count = this.table[i][col].value === round ? (count + 1) : 0;
+      if (count >= max) {
+        return true;
+      }
+    }
+
+    count = 0;
+    for (let i = Math.max(position, 0); i < Math.min(this.nbRow, this.nbCol + position); i++) {
+      count = this.table[i][i - position].value === round ? (count + 1) : 0;
+      if (count >= max) {
+        return true;
+      }
+    }
+
+    count = 0;
+    position = row + col;
+    for (let i = Math.max(position - this.nbCol + 1, 0); i < Math.min(this.nbRow, position + 1); i++) {
+      count = this.table[i][position - i].value === round ? (count + 1) : 0;
+      if (count >= max) {
+        return true;
+      }
+    }
+
     return false;
+  }
+  
+  eventWinner(round: number) {
+    this.players.forEach((player: Player) => {
+      if (player.position === round) {
+        this.winner = player;
+        player.win++;
+      }
+    });
+    this.playerService.setPlayers('players', this.players);
   }
 }

@@ -1,9 +1,7 @@
-<mat-card>
-    <mat-card-content>
+<mat-card class="form">
+    <div class="form__container">
         <h2>{{ texts.form.description }}</h2>
-    </mat-card-content>
-    <div class="form">
-        <form [formGroup]="playersForm" class="form__container">
+        <form [formGroup]="playersForm">
             <div class="form__container__block">
                 <mat-form-field class="form__field">
                     <mat-label class="form__label">{{ texts.form.questions.player1 }}</mat-label>

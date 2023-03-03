@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import fr from 'src/app/global/languages/fr';
 
 @Component({
@@ -8,4 +9,12 @@ import fr from 'src/app/global/languages/fr';
 })
 export class NavbarComponent {
   public texts = fr;
+
+  constructor(private router: Router) {
+
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
+  }
 }

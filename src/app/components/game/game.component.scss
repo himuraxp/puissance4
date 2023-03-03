@@ -38,13 +38,18 @@
         padding: 15px;
         background: #c2185b;
         cursor: pointer; 
+        &__cell {
+            background: #303030;
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+        }
     }
     .highlighted {
         background: #da437f;
         transition: .2s;
     }   
     .coin {
-        background: #303030;
         border-radius: 50%;
         width: 64px;
         height: 64px;
@@ -57,14 +62,12 @@
     bottom: 0;
     width: 100%;
     justify-content: center;
-    background: #c2185b;
     &__container {
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin: 25px;
         &__block {
-            background: #303030;
             width: calc(50% - 65px);
             padding: 25px;
             border-radius: 25px;
@@ -73,6 +76,57 @@
             &__name {
                 font-size: 1.5em;
                 margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.reload {
+    cursor: pointer;
+    transition: .2s;
+    &:hover {
+        transform: scale(1.1);
+        background: #f0307b;
+    }
+    .button {
+        font-weight: bold;
+        margin: 2px 0 0 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game {
+        &__container {
+          border-radius: 0;
+        }
+        &__col {
+            margin: 10px;
+            padding: 10px;
+            &__cell {
+                width: 8vw;
+                height: 8vw;
+            }
+        }
+        .coin {
+            width: 8vw;
+            height: 8vw;
+        }
+    }
+    .message__container {
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+        text-align: center;
+        padding: 5px 0;
+    }
+    .score {
+        &__container {
+            margin: 0;
+            font-size: 0.8em;
+            justify-content: space-between;
+            &__block {
+                width: calc(50vw - 55px);
+                border-radius: 0;
             }
         }
     }
