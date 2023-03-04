@@ -1,7 +1,9 @@
+@import "../../../assets/scss/color";
+@import "../../../assets/scss/responsive";
+
 .navbar {
   &__row {
     justify-content: center;
-
     &__title {
       font-weight: bold;
       margin: 0;
@@ -22,5 +24,46 @@
       height: 64px;
       cursor: pointer;
     }
+    &__theme {
+      display: flex;
+      position: fixed;
+      justify-content: center;
+      padding: 10px 0;
+      width: 90px;
+      height: 25px;
+      right: 10px;
+      border-radius: 25px;
+      &__button {
+        width: 40px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        margin-top: -10px;
+        &.left {
+          border-radius: 25px 0 0 25px;
+          padding-left: 10px;
+          cursor: pointer;
+        }
+        &.right {
+          border-radius: 0 25px 25px 0;
+          padding-left: 8px;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
+
+@include respond-to('s') {
+  .navbar__row {
+    &__logo {
+      width: 40px;
+      margin-right: 10px;
+    }
+    &__title {
+      font-size: 0.9em;
+    }
+  }
+}
+
+

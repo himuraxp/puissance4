@@ -1,0 +1,89 @@
+@import "./color";
+
+.dark {
+  .mat-mdc-unelevated-button.mat-primary:not(:disabled) {
+    background: $primary;
+  }
+
+  .navbar {
+    background: $primary;
+
+    &__row__theme {
+      border: 2px solid $primary-light;
+      background: $primary-light;
+
+      &__button.active {
+        background: $primary;
+      }
+    }
+  }
+
+  .message {
+    &__container {
+      background: $primary;
+    }
+  }
+
+  .game {
+    &__container {
+      border: 15px solid $primary;
+      background: $primary;
+
+      &__col {
+        background: $primary;
+      }
+    }
+
+    .highlighted {
+      background: $primary-light;
+    }
+  }
+
+  .reload:hover {
+    background: $primary-light !important;
+  }
+}
+
+.light {
+  .mat-mdc-unelevated-button.mat-primary:not(:disabled) {
+    background: $secondary;
+  }
+
+  .navbar {
+    background: $secondary;
+
+    &__row__theme {
+      border: 2px solid $secondary-light;
+      background: $secondary-light;
+
+      &__button.active {
+        background: $secondary;
+      }
+    }
+  }
+
+  .message {
+    &__container {
+      background: $secondary;
+    }
+  }
+
+  .game {
+    &__container {
+      border: 15px solid $secondary;
+      background: $secondary;
+
+      &__col {
+        background: $secondary;
+      }
+    }
+
+    .highlighted {
+      background: $secondary-light;
+    }
+
+    .reload:hover {
+      background: $secondary-light !important;
+    }
+  }
+}

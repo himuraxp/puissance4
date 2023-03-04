@@ -8,7 +8,6 @@
   justify-content: center;
 
   &__container {
-    background: $primary;
     border-radius: 25px;
     padding: 25px;
     margin: 25px;
@@ -36,15 +35,12 @@
   &__container {
     max-width: 690px;
     max-height: 700px;
-    border: 15px solid $primary;
-    background: $primary;
     border-radius: 25px;
   }
 
   &__col {
     margin: 15px;
     padding: 15px;
-    background: $primary;
     cursor: pointer;
 
     &__cell {
@@ -56,7 +52,6 @@
   }
 
   .highlighted {
-    background: $primary-light;
     transition: .2s;
   }
 
@@ -109,10 +104,8 @@
 .reload {
   cursor: pointer;
   transition: .2s;
-
   &:hover {
     transform: scale(1.1);
-    background: $primary-light;
   }
 
   .button {
