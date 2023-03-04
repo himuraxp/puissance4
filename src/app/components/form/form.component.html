@@ -24,8 +24,9 @@
                     </mat-error>
                 </mat-form-field>
             </div>
-            <button (click)="start(player1.value, player2.value)" [disabled]="playersForm.pristine || playersForm.invalid" type="submit" mat-flat-button
-                color="primary" class="form__container__button">
+            <button (click)="start(player1.value, player2.value)"
+                [disabled]="playersForm.pristine || playersForm.invalid" type="submit" mat-flat-button color="primary"
+                class="form__container__button">
                 {{ texts.form.button }}
             </button>
         </form>

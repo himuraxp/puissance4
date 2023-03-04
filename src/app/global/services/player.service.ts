@@ -14,13 +14,15 @@ export class PlayerService {
     this.localStorage = window.localStorage;
   }
 
-  getPlayer(key: string): any {
+  // Get data players from localstorage
+  getPlayers(key: string): any {
     if (this.localStorage) {
-      return JSON.parse(this.localStorage.getItem(key)+'');
+      return JSON.parse(this.localStorage.getItem(key) + '');
     }
     return null;
   }
 
+  // Set data players in localstorage and update subject
   setPlayers(key: string, value: Player[]): boolean {
     if (this.localStorage) {
       this.localStorage.setItem(key, JSON.stringify(value));
@@ -34,7 +36,8 @@ export class PlayerService {
     return false;
   }
 
-  removePlayer(key: string): boolean {
+  // Delete data players in localstorage and update subject
+  removePlayers(key: string): boolean {
     if (this.localStorage) {
       this.localStorage.removeItem(key);
       this.subject.next({

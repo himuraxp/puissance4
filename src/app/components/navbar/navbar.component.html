@@ -1,6 +1,8 @@
 <mat-toolbar class="navbar" color="primary">
-    <mat-toolbar-row class="navbar__row" (click)="goHome()">
-        <img class="navbar__logo" src="assets/images/logo.png" />
-        <h1 class="navbar__title">{{ texts.appTitle }}</h1>
+    <mat-toolbar-row class="navbar__row">
+        <mat-icon *ngIf="router.url === '/game'" class="navbar__row__back" (click)="goHome()" aria-hidden="false"
+            aria-label="Retour" fontIcon="keyboard_arrow_left"></mat-icon>
+        <img class="navbar__row__logo" src="assets/images/logo.png" />
+        <h1 class="navbar__row__title">{{ texts.appTitle }}</h1>
     </mat-toolbar-row>
 </mat-toolbar>

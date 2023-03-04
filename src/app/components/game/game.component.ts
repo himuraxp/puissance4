@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { transition, trigger } from '@angular/animations';
+
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngxs/store';
+
 import { Player, UpdatePlayer } from 'src/app/global/models/player';
 import { PlayerService } from 'src/app/global/services/player.service';
-import { transition, trigger } from '@angular/animations';
-import { activeCoin, runAnimate } from './animates/coin';
+
+import { activeCoin, runCoinAnimate } from './animates/coin';
+import { activeBoard, runBoardAnimate } from './animates/board';
+import { activePlayer1, runPlayer1Animate, activePlayer2, runPlayer2Animate } from './animates/players';
+
 import fr from 'src/app/global/languages/fr';
 
 @Component({
@@ -14,16 +20,29 @@ import fr from 'src/app/global/languages/fr';
   animations: [
     activeCoin,
     trigger('activeCoin', [
-      transition(':enter', runAnimate()),
+      transition(':enter', runCoinAnimate()),
     ]),
+    activeBoard,
+    trigger('activeBoard', [
+      transition(':enter', runBoardAnimate()),
+    ]),
+    activePlayer1,
+    trigger('activePlayer1', [
+      transition(':enter', runPlayer1Animate()),
+    ]),
+    activePlayer2,
+    trigger('activePlayer2', [
+      transition(':enter', runPlayer2Animate()),
+    ])
   ],
 })
+
 export class GameComponent implements OnInit {
   private subsrcib: Subscription[] = [];
   private observPlayers: Observable<Player[]> | undefined;
   private nbRow: number = 6;
   private nbCol: number = 7;
-  
+
   public texts = fr;
   public players: Player[] = [];
   public winner: Player | undefined;
@@ -36,16 +55,16 @@ export class GameComponent implements OnInit {
   constructor(
     private playerService: PlayerService,
     private store: Store,
-  ) {
-  }
+  ) { }
 
+  // Players data initialization
   ngOnInit() {
     this.observPlayers = this.store.select((state) => state.players.players);
     this.subsrcib.push(
       this.observPlayers.subscribe((player: Player[]) => {
         this.players = player !== undefined ? player : [];
         if (this.players.length === 0) {
-          this.players = this.playerService.getPlayer('players');
+          this.players = this.playerService.getPlayers('players');
         }
       })
     );
@@ -54,6 +73,7 @@ export class GameComponent implements OnInit {
     this.generateBoard();
   }
 
+  // Select the player who start the game
   initFirstPlayer() {
     if (this.winner === undefined) {
       this.round = Math.floor(Math.random() * Math.floor(3));
@@ -63,19 +83,21 @@ export class GameComponent implements OnInit {
     }
   }
 
+  // Initialization of game data
   generateBoard() {
     this.noWinner = 0;
     this.moves = 0;
     this.players.forEach((player: Player) => {
       player.coins = 21;
     });
-    
+
     if (this.winner !== null && this.winner !== undefined) {
       this.initFirstPlayer();
     }
 
     this.winner = undefined;
-    
+
+    // Generation of a two-dimensional array representing the game grid
     for (let i = 0; i < this.nbRow; i++) {
       this.table[i] = new Array(this.nbCol)
         .fill(null)
@@ -83,26 +105,29 @@ export class GameComponent implements OnInit {
     }
   }
 
+  // Click event for select column
   selectCol(col: number) {
     if (this.winner === null || this.winner === undefined) {
       let row: number | undefined;
-      
+
       for (let i = this.nbRow - 1; i >= 0; i--) {
         if (this.table[i][col].value === 0) {
           row = i;
           break;
         }
       }
-      
+
+      // Update the next player
       if (row !== undefined) {
         if (this.round % 2 === 1) {
           this.round = 1;
         } else {
           this.round = 2;
         }
+
         this.addCoin(row, col, this.round);
         this.round++;
-        
+
         return row;
       }
 
@@ -110,15 +135,18 @@ export class GameComponent implements OnInit {
     return 0;
   }
 
+  // MouseOver event to highlight a column
   highlight(position: number) {
     this.highlighted = position;
   }
 
+  // Update table with the coin position
   addCoin(row: number, col: number, player: number) {
     this.table[row][col].value = player;
 
+    // Ckeck have a winner or tie game
     if (this.checkWinner(row, col, this.round)) {
-        this.eventWinner(this.round);
+      this.eventWinner(this.round);
     } else {
       if (this.moves === this.nbRow * this.nbCol - 1) {
         this.noWinner = 1;
@@ -127,6 +155,7 @@ export class GameComponent implements OnInit {
       }
     }
 
+    // Remove a coin from the player who just played and update this on store
     this.players.forEach((player: Player) => {
       if (player.position === this.round) {
         player.coins--;
@@ -135,11 +164,13 @@ export class GameComponent implements OnInit {
     });
   }
 
+  // Checks if a condition is met to win the game
   checkWinner(row: number, col: number, round: number) {
     let max = 4;
     let count = 0;
     let position = row - col;
-    
+
+    // Horizontal checking
     for (let i = 0; i < this.nbCol; i++) {
       count = this.table[row][i].value === round ? (count + 1) : 0;
       if (count >= max) {
@@ -147,6 +178,7 @@ export class GameComponent implements OnInit {
       }
     }
 
+    // Vertical checking
     count = 0;
     for (let i = 0; i < this.nbRow; i++) {
       count = this.table[i][col].value === round ? (count + 1) : 0;
@@ -155,6 +187,7 @@ export class GameComponent implements OnInit {
       }
     }
 
+    // Diagonal top to bottom checking
     count = 0;
     for (let i = Math.max(position, 0); i < Math.min(this.nbRow, this.nbCol + position); i++) {
       count = this.table[i][i - position].value === round ? (count + 1) : 0;
@@ -163,6 +196,7 @@ export class GameComponent implements OnInit {
       }
     }
 
+    // Diagonal bottom to top checking
     count = 0;
     position = row + col;
     for (let i = Math.max(position - this.nbCol + 1, 0); i < Math.min(this.nbRow, position + 1); i++) {
@@ -174,7 +208,8 @@ export class GameComponent implements OnInit {
 
     return false;
   }
-  
+
+  // When the game is won increase the score of the player and update this on store
   eventWinner(round: number) {
     this.players.forEach((player: Player) => {
       if (player.position === round) {

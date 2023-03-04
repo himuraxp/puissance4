@@ -7,6 +7,7 @@ export class RouteStateModel {
   };
 }
 
+// State metadata initialization
 @State<RouteStateModel>({
   name: 'Route',
   defaults: {
@@ -15,12 +16,15 @@ export class RouteStateModel {
     },
   },
 })
+
 export class RouteState {
+  // Fetch route state from store
   @Selector()
   static getRoute(state: RouteStateModel) {
     return state.route;
   }
 
+  // Add route state in store
   @Action(AddRoute)
   add(
     { getState, patchState }: StateContext<RouteStateModel>,
@@ -34,6 +38,7 @@ export class RouteState {
     });
   }
 
+  // Update route state in store
   @Action(UpdateRoute)
   put(
     { getState, setState }: StateContext<RouteStateModel>,

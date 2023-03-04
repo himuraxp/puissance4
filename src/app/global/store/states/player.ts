@@ -5,6 +5,7 @@ export class PlayerStateModel {
   players: Player[] = [];
 }
 
+// State metadata initialization
 @State<PlayerStateModel>({
   name: 'Players',
   defaults: {
@@ -13,11 +14,13 @@ export class PlayerStateModel {
 })
 
 export class PlayerState {
+  // Fetch player state from store
   @Selector()
-  static getPlayer(state: PlayerStateModel) {
+  static getPlayers(state: PlayerStateModel) {
     return state.players;
   }
 
+  // Add player state in store
   @Action(AddPlayer)
   add(
     { getState, patchState }: StateContext<PlayerStateModel>,
@@ -27,9 +30,9 @@ export class PlayerState {
     patchState({
       players: [...state.players, payload],
     });
-    console.log(state)
   }
 
+  // Update player state in store
   @Action(UpdatePlayer)
   put(
     { getState, setState }: StateContext<PlayerStateModel>,
@@ -38,6 +41,7 @@ export class PlayerState {
     const state = getState();
   }
 
+  // Delete players state in store
   @Action(DeletePlayer)
   delete(
     { getState, patchState }: StateContext<PlayerStateModel>,

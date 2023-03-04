@@ -1,3 +1,5 @@
+@import "./assets/scss/color";
+
 body {
     margin: 0;
 }
@@ -5,10 +7,10 @@ h2 {
     text-align: center;
 }
 .yellow {
-    background: #E3D232!important;
-    color: #303030;
+    background: $yellow!important;
+    color: $grey;
 }
 .blue {
-    background: #05BCE3!important;
-    color: #303030;
+    background: $blue!important;
+    color: $grey;
 }

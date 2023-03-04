@@ -1,28 +1,34 @@
+@import "../../../assets/scss/responsive";
+
 .form {
-    height: calc(100vh - 64px);
-    display: flex;
-    justify-content: center;
-    padding: 0 15px;
-    &__container {
-        display: block;
-        text-align: center;
-        &__block {
-            display: block;
-        }
-        &__button {
-            margin: 25px 0;
-            font-size: 1.3em;
-        }
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+
+  &__container {
+    display: block;
+    text-align: center;
+
+    &__block {
+      display: block;
     }
-    &__field {
-        margin: 25px 25px 0 25px;
-        display: block;
+
+    &__button {
+      margin: 25px 0;
+      font-size: 1.3em;
     }
+  }
+
+  &__field {
+    margin: 25px 25px 0 25px;
+    display: block;
+  }
 }
 
-@media screen and (min-width: 768px) {
-    .form__container {
-      width: 50%;
-      margin: auto;
-    }
+@include respond-to('l') {
+  .form__container {
+    width: 50%;
+    margin: auto;
+  }
 }

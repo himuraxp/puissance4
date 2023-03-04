@@ -10,10 +10,11 @@ import fr from 'src/app/global/languages/fr';
 export class NavbarComponent {
   public texts = fr;
 
-  constructor(private router: Router) {
+  constructor(public router: Router) {
 
   }
 
+  // Click event for redirect to homepage
   goHome() {
     this.router.navigate(['/']);
   }

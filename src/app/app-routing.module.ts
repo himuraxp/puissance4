@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './components/form/form.component';
 import { GameComponent } from './components/game/game.component';
 
+// URL Routing
 const routes: Routes = [
   { path: 'player', component: FormComponent },
   { path: '', redirectTo: 'player', pathMatch: 'full' },

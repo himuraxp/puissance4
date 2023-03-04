@@ -1,5 +1,6 @@
 import { animate, animation, AnimationReferenceMetadata, keyframes, style, transition, trigger, useAnimation } from '@angular/animations';
 
+// Animation drop of the piece with rebound
 export const coinAnimate = animation(
     [
         style([{ opacity: 0 }]),
@@ -19,7 +20,7 @@ export const coinAnimate = animation(
     ]
 );
 
-export function runAnimate(
+export function runCoinAnimate(
 ): AnimationReferenceMetadata {
     return useAnimation(coinAnimate);
 }
