@@ -1,89 +1,165 @@
 @import "./color";
 
+// Theme Dark
+#body:has(.dark) {
+  background: $dark-background!important;
+}
+
 .dark {
+  .yellow {
+    background: $dark-yellow!important;
+  }
+  .blue {
+    background: $dark-blue!important;
+  }
+  
+  .form {
+    background: $dark-background;
+    &__container__title {
+      color: $dark;
+    }
+  }
+
   .mat-mdc-unelevated-button.mat-primary:not(:disabled) {
-    background: $primary;
+    background: $dark;
+  }
+  
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background: $dark-field;
+  }
+
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: $dark;
+  }
+
+  .mat-mdc-unelevated-button:disabled {
+    color: $dark-disabled-button-text;
+    background: $dark-disabled-button;
   }
 
   .navbar {
-    background: $primary;
+    background: $dark;
 
     &__row__theme {
-      border: 2px solid $primary-light;
-      background: $primary-light;
+      border: 2px solid $dark-variant;
+      background: $dark-variant;
 
       &__button.active {
-        background: $primary;
+        background: $dark;
       }
     }
   }
 
-  .message {
+  .message, .score {
     &__container {
-      background: $primary;
+      background: $dark;
+      &__block {
+        color: $dark-background;
+      }
     }
   }
 
   .game {
     &__container {
-      border: 15px solid $primary;
-      background: $primary;
-
-      &__col {
-        background: $primary;
+      border: 15px solid $dark;
+      background: $dark;
+    }
+    
+    &__col {
+      background: $dark;
+      &__cell {
+        background: $dark-background!important;
       }
     }
-
+    
     .highlighted {
-      background: $primary-light;
+      background: $dark-variant;
     }
   }
 
   .reload:hover {
-    background: $primary-light !important;
+    background: $dark-variant !important;
   }
 }
 
+// Theme Light
+#body:has(.light)  {
+  background: $light-background;
+}
+
 .light {
+  .yellow {
+    background: $light-yellow!important;
+  }
+  .blue {
+    background: $light-blue!important;
+  }
+
+  .form {
+    background: $light-background;
+    &__container__title {
+      color: $light;
+    }
+  }
+
   .mat-mdc-unelevated-button.mat-primary:not(:disabled) {
-    background: $secondary;
+    background: $light;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background: $light-field;
+  }
+
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: $light;
+  }
+
+  .mat-mdc-unelevated-button:disabled {
+    color: $light-disabled-button-text;
+    background: $light-disabled-button;
   }
 
   .navbar {
-    background: $secondary;
+    background: $light;
 
     &__row__theme {
-      border: 2px solid $secondary-light;
-      background: $secondary-light;
+      border: 2px solid $light-variant;
+      background: $light-variant;
 
       &__button.active {
-        background: $secondary;
+        background: $light;
       }
     }
   }
 
-  .message {
+  .message, .score {
     &__container {
-      background: $secondary;
+      background: $light;
+      &__block {
+        color: $light-background;
+      }
     }
   }
 
   .game {
     &__container {
-      border: 15px solid $secondary;
-      background: $secondary;
+      border: 15px solid $light;
+      background: $light;
+    }
 
-      &__col {
-        background: $secondary;
+    &__col {
+      background: $light;
+      &__cell {
+        background: $light-background;
       }
     }
 
     .highlighted {
-      background: $secondary-light;
+      background: $light-variant;
     }
 
     .reload:hover {
-      background: $secondary-light !important;
+      background: $light-variant !important;
     }
   }
 }

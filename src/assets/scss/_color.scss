@@ -1,11 +1,21 @@
-$yellow: #E3D232;
-$blue: #05BCE3;
 $grey: #303030;
-$primary: #c2185b;
-$primary-light:#da437f;
-$secondary: #18c248;
-$secondary-light:#4dda43;
-$fsd-yellow: #fae5b3;
-$fsd-blue-light: #5298ff;
-$fsd-blue: #0566f6;
-$fsd-light-nav: #e6f0fe;
+
+$dark: #E80F88;
+$dark-variant: #AF0171;
+$dark-background: #4C0033;
+$dark-field: rgba(232, 15, 136, 0.1);
+$dark-disabled-button-text: $dark-background;
+$dark-disabled-button: rgba(232, 15, 136, 0.2);
+$dark-text: whitesmoke;
+$dark-yellow: #5BDB4B;
+$dark-blue: #5690DB;
+
+$light: #F2789F;
+$light-variant:#F999B7;
+$light-background: #FEE3EC;
+$light-field: rgba(242, 120, 159, 0.1);
+$light-disabled-button-text: $light-background;
+$light-disabled-button: rgba(242, 120, 159, 0.2);
+$light-text: #303030;
+$light-yellow: #4BDB5A;
+$light-blue: #5678DB;

@@ -29,6 +29,7 @@
 @include respond-to('l') {
   .form__container {
     width: 50%;
+    max-width: 640px;
     margin: auto;
   }
 }
