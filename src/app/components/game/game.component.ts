@@ -222,6 +222,6 @@ export class GameComponent implements OnInit {
     this.playerService.setPlayers('players', this.players);
     setTimeout(() => {
       this.winAnimate = false;
-    }, 3000)
+    }, 5000)
   }
 }
