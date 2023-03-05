@@ -9,10 +9,16 @@
   .yellow {
     background: $dark-yellow!important;
   }
-  .blue {
-    background: $dark-blue!important;
+  .red {
+    background: $dark-red!important;
   }
-  
+  .yellowcoin {
+    background: $dark-yellow-coin!important;
+  }
+  .redcoin {
+    background: $dark-red-coin!important;
+  }
+
   .form {
     background: $dark-background;
     &__container__title {
@@ -95,8 +101,14 @@
   .yellow {
     background: $light-yellow!important;
   }
-  .blue {
-    background: $light-blue!important;
+  .red {
+    background: $light-red!important;
+  }
+  .yellowcoin {
+    background: $light-yellow-coin!important;
+  }
+  .redcoin {
+    background: $light-red-coin!important;
   }
 
   .form {
