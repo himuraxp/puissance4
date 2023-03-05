@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { transition, trigger } from '@angular/animations';
 
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, timeout } from 'rxjs';
 import { Store } from '@ngxs/store';
 
 import { Player, UpdatePlayer } from 'src/app/global/models/player';
@@ -51,6 +51,7 @@ export class GameComponent implements OnInit {
   public table = new Array(this.nbRow);
   public highlighted: number = -1;
   public noWinner: number = 0;
+  public winAnimate: boolean = false;
 
   constructor(
     private playerService: PlayerService,
@@ -211,6 +212,7 @@ export class GameComponent implements OnInit {
 
   // When the game is won increase the score of the player and update this on store
   eventWinner(round: number) {
+    this.winAnimate = true;
     this.players.forEach((player: Player) => {
       if (player.position === round) {
         this.winner = player;
@@ -218,5 +220,8 @@ export class GameComponent implements OnInit {
       }
     });
     this.playerService.setPlayers('players', this.players);
+    setTimeout(() => {
+      this.winAnimate = false;
+    }, 3000)
   }
 }

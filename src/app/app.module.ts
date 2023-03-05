@@ -12,17 +12,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from "@angular/material/icon";
 
-// App
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FormComponent } from './components/form/form.component';
-
 // Store
 import { NgxsModule } from '@ngxs/store';
 import { PlayerState } from '../app/global/store/states/player';
 import { RouteState } from '../app/global/store/states/route';
 import { GameComponent } from './components/game/game.component';
+
+// Particules
+import { NgParticlesModule } from "ng-particles";
+
+// App
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormComponent } from './components/form/form.component';
+import { ParticulesComponent } from './components/game/particules/particules.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { GameComponent } from './components/game/game.component';
     NavbarComponent,
     FormComponent,
     GameComponent,
+    ParticulesComponent,
     
   ],
   imports: [
@@ -44,6 +49,7 @@ import { GameComponent } from './components/game/game.component';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
+    NgParticlesModule,
     NgxsModule.forRoot([PlayerState, RouteState])
   ],
   providers: [],

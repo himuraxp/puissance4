@@ -28,8 +28,12 @@
     background: $dark-field;
   }
 
-  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
     color: $dark;
+  }
+  
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: whitesmoke;
   }
 
   .mat-mdc-unelevated-button:disabled {
@@ -110,7 +114,11 @@
     background: $light-field;
   }
 
-  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: $light;
+  }
+
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: $light;
   }
 
